@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Service
+Name=Markdown Web View
+Icon=text/markdown
+MimeType=text/markdown;
+X-KDE-ServiceTypes=KParts/ReadOnlyPart,Browser/View
+X-KDE-Library=kmarkdownwebviewpart

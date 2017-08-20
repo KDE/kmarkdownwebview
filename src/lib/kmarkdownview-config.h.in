@@ -1,0 +1,6 @@
+#ifndef KMARKDOWNVIEW_CONFIG_H
+#define KMARKDOWNVIEW_CONFIG_H
+
+#cmakedefine USE_QTWEBKIT
+
+#endif
