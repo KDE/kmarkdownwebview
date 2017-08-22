@@ -141,6 +141,14 @@ bool MarkdownPart::doCloseStream()
     return true;
 }
 
+bool MarkdownPart::closeUrl()
+{
+    m_sourceDocument->setText(QString());
+    m_streamedData.clear();
+
+    return ReadOnlyPart::closeUrl();
+}
+
 void MarkdownPart::handleOpenUrlRequest(const QUrl& url)
 {
     QDesktopServices::openUrl(url);

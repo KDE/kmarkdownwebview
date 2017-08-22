@@ -68,6 +68,8 @@ protected: // KParts::ReadOnlyPart API
     bool doWriteStream(const QByteArray& data) override;
     bool doCloseStream() override;
 
+    bool closeUrl() override;
+
 private:
     void setupActions();
     void handleOpenUrlRequest(const QUrl& url);
