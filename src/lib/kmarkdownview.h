@@ -52,7 +52,7 @@ public:
 #endif
 
 public:
-    KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QWidget* parent = nullptr);
+    explicit KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QWidget* parent = nullptr);
     ~KMarkdownView() override;
 
 public:
