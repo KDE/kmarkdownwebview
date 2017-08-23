@@ -19,9 +19,9 @@
 
   new QWebChannel(qt.webChannelTransport,
         function(channel) {
-            var content = channel.objects.content;
-            updateText(content.text);
-            content.textChanged.connect(updateText);
+            var sourceTextObject = channel.objects.sourceTextObject;
+            updateText(sourceTextObject.text);
+            sourceTextObject.textChanged.connect(updateText);
         }
   );
   </script>
