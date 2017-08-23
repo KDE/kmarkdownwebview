@@ -1,6 +1,13 @@
 [Desktop Entry]
 Type=Service
 Name=Markdown Web View
+Name[ca]=Vista web del Markdown
+Name[es]=Vista web markdown
+Name[nl]=Webweergave noteren
+Name[pt]=Vista Web de Markdown
+Name[sv]=Markdown webbvisning
+Name[uk]=Вебперегляд даних Markdown
+Name[x-test]=xxMarkdown Web Viewxx
 Icon=text/markdown
 MimeType=text/markdown;
 X-KDE-ServiceTypes=KParts/ReadOnlyPart,Browser/View
