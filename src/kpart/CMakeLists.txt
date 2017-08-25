@@ -21,3 +21,8 @@ install(
   FILES kmarkdownwebviewpartui.rc
   DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kmarkdownwebviewpart
 )
+
+install(
+    FILES org.kde.kmarkdownwebviewpart.appdata.xml
+    DESTINATION ${KDE_INSTALL_METAINFODIR}
+)

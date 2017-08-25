@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop">
+  <id>org.kde.kmarkdownwebviewpart</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LGPL-2.1+</project_license>
+  <name>Markdown Viewer KPart</name>
+  <summary>Rendered display of Markdown files in KParts-using software</summary>
+  <description>
+    <p>The Markdown Viewer KPart allows KParts-using software to display files in Markdown format in a rendered view.</p>
+  </description>
+  <url type="homepage">https://cgit.kde.org/kmarkdownwebview.git/about/</url>
+  <update_contact>kossebau_at_kde.org</update_contact>
+  <project_group>KDE</project_group>
+</component>
