@@ -93,6 +93,8 @@ bool MarkdownPart::openFile()
         return false;
     }
 
+    prepareViewStateRestoringOnReload();
+
     QTextStream stream(&file);
     QString text = stream.readAll();
 
@@ -133,6 +135,8 @@ bool MarkdownPart::doCloseStream()
         return false;
     }
 
+    prepareViewStateRestoringOnReload();
+
     QTextStream stream(&buffer);
     QString text = stream.readAll();
 
@@ -147,10 +151,23 @@ bool MarkdownPart::doCloseStream()
 
 bool MarkdownPart::closeUrl()
 {
+    m_previousScrollPosition = m_widget->scrollPosition();
+    m_previousUrl = url();
+
     m_sourceDocument->setText(QString());
     m_streamedData.clear();
 
     return ReadOnlyPart::closeUrl();
+}
+
+void MarkdownPart::prepareViewStateRestoringOnReload()
+{
+    if (url() == m_previousUrl) {
+        KParts::OpenUrlArguments args(arguments());
+        args.setXOffset(m_previousScrollPosition.x());
+        args.setYOffset(m_previousScrollPosition.y());
+        setArguments(args);
+    }
 }
 
 void MarkdownPart::restoreScrollPosition()

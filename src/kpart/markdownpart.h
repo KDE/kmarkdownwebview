@@ -23,6 +23,7 @@
 
 // Qt
 #include <QByteArray>
+#include <QPoint>
 
 class MarkdownBrowserExtension;
 class MarkdownSourceDocument;
@@ -70,6 +71,7 @@ protected: // KParts::ReadOnlyPart API
 
 private:
     void setupActions();
+    void prepareViewStateRestoringOnReload();
     void restoreScrollPosition();
 
     void handleOpenUrlRequest(const QUrl& url);
@@ -88,6 +90,9 @@ private:
     MarkdownBrowserExtension* m_browserExtension = nullptr;
 
     QByteArray m_streamedData;
+
+    QUrl m_previousUrl;
+    QPoint m_previousScrollPosition;
 };
 
 inline KMarkdownView* MarkdownPart::view() const { return m_widget; }
