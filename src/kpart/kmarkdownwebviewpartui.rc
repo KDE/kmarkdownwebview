@@ -2,7 +2,7 @@
 <gui name="markdownpart" version="1" translationDomain="kmarkdownwebview">
 
 <MenuBar>
-<Menu name="edit">
+<Menu name="edit"><text>&amp;Edit</text>
   <Action name="selectAll" />
 </Menu>
 </MenuBar>
