@@ -72,6 +72,8 @@ protected: // KParts::ReadOnlyPart API
 
 private:
     void setupActions();
+    void restoreScrollPosition();
+
     void handleOpenUrlRequest(const QUrl& url);
     void requestContextMenu(const QPoint& globalPos,
                             const QUrl& linkUrl, const QString& linkText,

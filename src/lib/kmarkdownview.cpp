@@ -22,6 +22,7 @@
 #endif
 
 #include "kabstractmarkdownsourcedocument.h"
+#include "kmarkdownhtmlview.h"
 
 // Qt
 #ifdef USE_QTWEBKIT
@@ -42,6 +43,7 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     : QWebEngineView(parent)
     , m_viewPage(new KMarkdownViewPage(this))
 #endif
+    , m_htmlView(new KMarkdownHtmlView(this))
     , m_sourceDocument(sourceDocument)
 {
 #ifdef USE_QTWEBKIT
@@ -56,24 +58,28 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
 #ifdef USE_QTWEBKIT
     auto frame = page->mainFrame();
     frame->addToJavaScriptWindowObject("sourceTextObject", m_sourceDocument);
+    frame->addToJavaScriptWindowObject("viewObject", m_htmlView);
 #else
     QWebChannel* channel = new QWebChannel(this);
     channel->registerObject(QStringLiteral("sourceTextObject"), m_sourceDocument);
+    channel->registerObject(QStringLiteral("viewObject"), m_htmlView);
     m_viewPage->setWebChannel(channel);
 #endif
+    connect(m_htmlView, &KMarkdownHtmlView::renderingDone, this, &KMarkdownView::renderingDone);
 
     setUrl(QUrl("qrc:/kmarkdownview/index.html"));
 }
 
 KMarkdownView::~KMarkdownView() = default;
 
-KMarkdownView::ScrollPosition KMarkdownView::scrollPosition() const
+QPoint KMarkdownView::scrollPosition() const
 {
-#ifdef USE_QTWEBKIT
-    return page()->mainFrame()->scrollPosition();
-#else
-    return page()->scrollPosition();
-#endif
+    return m_htmlView->scrollPosition();
+}
+
+void KMarkdownView::setScrollPosition(int x, int y)
+{
+    m_htmlView->requestSetScrollPosition(x, y);
 }
 
 void KMarkdownView::contextMenuEvent(QContextMenuEvent* event)

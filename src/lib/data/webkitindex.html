@@ -14,7 +14,17 @@
 
   var updateText = function(text) {
       placeholder.innerHTML = marked(text);
+      viewObject.emitRenderingDone();
   }
+
+  // document.body.onscroll does not work
+  window.onscroll = function() {
+      viewObject.setScrollPosition(document.body.scrollLeft, document.body.scrollTop);
+  };
+  viewObject.requestSetScrollPosition.connect(function(x,y) {
+      document.body.scrollTop = y;
+      document.body.scrollLeft = x;
+  });
 
   updateText(sourceTextObject.text);
   sourceTextObject.textChanged.connect(updateText);

@@ -100,6 +100,9 @@ bool MarkdownPart::openFile()
 
     file.close();
 
+    disconnect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
+    connect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
+
     m_sourceDocument->setText(text);
 
     return true;
@@ -135,6 +138,9 @@ bool MarkdownPart::doCloseStream()
     QTextStream stream(&buffer);
     QString text = stream.readAll();
 
+    disconnect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
+    connect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
+
     m_sourceDocument->setText(text);
 
     m_streamedData.clear();
@@ -147,6 +153,14 @@ bool MarkdownPart::closeUrl()
     m_streamedData.clear();
 
     return ReadOnlyPart::closeUrl();
+}
+
+void MarkdownPart::restoreScrollPosition()
+{
+    const KParts::OpenUrlArguments args(arguments());
+    m_widget->setScrollPosition(args.xOffset(), args.yOffset());
+
+    disconnect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
 }
 
 void MarkdownPart::handleOpenUrlRequest(const QUrl& url)

@@ -1,6 +1,7 @@
 set(kmarkdownview_SRCS
     kmarkdownview.cpp
     kabstractmarkdownsourcedocument.cpp
+    kmarkdownhtmlview.cpp
 )
 
 if(NOT USE_QTWEBKIT)

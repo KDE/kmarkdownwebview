@@ -13,13 +13,26 @@
 
   var placeholder = document.getElementById('placeholder');
 
+  var viewObject;
+
   var updateText = function(text) {
       placeholder.innerHTML = marked(text);
+      viewObject.emitRenderingDone();
   }
 
   new QWebChannel(qt.webChannelTransport,
         function(channel) {
             var sourceTextObject = channel.objects.sourceTextObject;
+            viewObject = channel.objects.viewObject;
+
+            document.body.onscroll = function() {
+                viewObject.setScrollPosition(document.body.scrollLeft, document.body.scrollTop);
+            };
+            viewObject.requestSetScrollPosition.connect(function(x,y) {
+                document.body.scrollTop = y;
+                document.body.scrollLeft = x;
+            });
+
             updateText(sourceTextObject.text);
             sourceTextObject.textChanged.connect(updateText);
         }
