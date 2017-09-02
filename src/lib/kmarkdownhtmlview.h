@@ -15,8 +15,8 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KMARKDOWNHTMLRENDERER_H
-#define KMARKDOWNHTMLRENDERER_H
+#ifndef KMARKDOWNHTMLVIEW_H
+#define KMARKDOWNHTMLVIEW_H
 
 #include <QObject>
 #include <QPoint>
