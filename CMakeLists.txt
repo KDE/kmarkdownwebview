@@ -40,7 +40,6 @@ if(USE_QTWEBKIT)
         PURPOSE "Required for markdown display, if Qt5WebEngineWidgets is not available"
         URL "https://qt.io/"
         TYPE REQUIRED)
-    find_package(Qt5WebChannel CONFIG QUIET)
 endif()
 
 add_definitions(
