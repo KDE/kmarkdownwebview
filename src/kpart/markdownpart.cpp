@@ -150,8 +150,12 @@ bool MarkdownPart::doCloseStream()
 
 bool MarkdownPart::closeUrl()
 {
-    m_previousScrollPosition = m_widget->scrollPosition();
-    m_previousUrl = url();
+    // protect against repeated call if already closed
+    const auto currentUrl = url();
+    if (currentUrl.isValid()) {
+        m_previousScrollPosition = m_widget->scrollPosition();
+        m_previousUrl = currentUrl;
+    }
 
     m_sourceDocument->setText(QString());
     m_streamedData.clear();
