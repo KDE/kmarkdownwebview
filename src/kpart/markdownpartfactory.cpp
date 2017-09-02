@@ -24,7 +24,9 @@
 
 
 MarkdownPartFactory::MarkdownPartFactory()
-    : m_aboutData("kmarkdownwebviewpart", i18n("Markdown Web View"), QStringLiteral("0.1"))
+    : m_aboutData(QStringLiteral("kmarkdownwebviewpart"),
+                  i18n("Markdown Web View"),
+                  QStringLiteral("0.1"))
 {
     m_aboutData.addAuthor(i18n("Friedrich W. H. Kossebau"), i18n("Author"), QStringLiteral("kossebau@kde.org"));
 }
@@ -37,7 +39,8 @@ QObject* MarkdownPartFactory::create(const char* iface,
 {
     Q_UNUSED(keyword );
 
-    const bool wantBrowserView = (args.contains("Browser/View") || (strcmp(iface, "Browser/View") == 0));
+    const bool wantBrowserView = (args.contains(QStringLiteral("Browser/View")) ||
+                                 (strcmp(iface, "Browser/View") == 0));
     const MarkdownPart::Modus modus =
         wantBrowserView ? MarkdownPart::BrowserViewModus :
         /* else */        MarkdownPart::ReadOnlyModus;

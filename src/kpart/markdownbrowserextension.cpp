@@ -81,7 +81,7 @@ void MarkdownBrowserExtension::requestContextMenu(const QPoint& globalPos,
             m_contextMenuActionCollection->addAction(QStringLiteral("copy"), action);
             selectActions.append(action);
 
-            mapAction.insert("editactions", selectActions);
+            mapAction.insert(QStringLiteral("editactions"), selectActions);
         }
     } else {
         flags |= IsLink;

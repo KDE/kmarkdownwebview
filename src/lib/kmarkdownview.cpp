@@ -67,7 +67,7 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
 #endif
     connect(m_htmlView, &KMarkdownHtmlView::renderingDone, this, &KMarkdownView::renderingDone);
 
-    setUrl(QUrl("qrc:/kmarkdownview/index.html"));
+    setUrl(QUrl(QStringLiteral("qrc:/kmarkdownview/index.html")));
 }
 
 KMarkdownView::~KMarkdownView() = default;
