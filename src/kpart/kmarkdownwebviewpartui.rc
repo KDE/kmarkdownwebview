@@ -3,7 +3,7 @@
 
 <MenuBar>
 <Menu name="edit"><text>&amp;Edit</text>
-  <Action name="selectAll" />
+    <Action name="edit_select_all" />
 </Menu>
 </MenuBar>
 

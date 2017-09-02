@@ -80,8 +80,7 @@ MarkdownPart::~MarkdownPart() = default;
 
 void MarkdownPart::setupActions()
 {
-    auto action = actionCollection()->addAction(KStandardAction::SelectAll, "selectAll");
-    connect(action, &QAction::triggered, this, &MarkdownPart::selectAll);
+    auto action = KStandardAction::selectAll(this, &MarkdownPart::selectAll, actionCollection());
     action->setShortcutContext(Qt::WidgetShortcut);
     m_widget->addAction(action);
 }
