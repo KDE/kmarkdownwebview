@@ -44,6 +44,7 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
     : KParts::ReadOnlyPart(parent)
     , m_sourceDocument(new MarkdownSourceDocument(this))
     , m_widget(new KMarkdownView(m_sourceDocument, parentWidget))
+    , m_browserExtension(new MarkdownBrowserExtension(this))
 {
     // set component data
     // the first arg must be the same as the subdirectory into which the part's rc file is installed
@@ -56,7 +57,6 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
     setXMLFile(QStringLiteral("kmarkdownwebviewpartui.rc"));
 
     if (modus == BrowserViewModus) {
-        m_browserExtension = new MarkdownBrowserExtension(this);
         connect(m_widget, &KMarkdownView::openUrlRequested,
                 m_browserExtension, &MarkdownBrowserExtension::requestOpenUrl);
         connect(m_widget, &KMarkdownView::selectionChanged,

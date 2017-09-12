@@ -87,7 +87,7 @@ private:
     MarkdownSourceDocument* m_sourceDocument;
     KMarkdownView* m_widget;
 
-    MarkdownBrowserExtension* m_browserExtension = nullptr;
+    MarkdownBrowserExtension* const m_browserExtension;
 
     QByteArray m_streamedData;
 
