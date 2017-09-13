@@ -26,7 +26,7 @@
 MarkdownPartFactory::MarkdownPartFactory()
     : m_aboutData(QStringLiteral("kmarkdownwebviewpart"),
                   i18n("Markdown Web View"),
-                  QStringLiteral("0.1"))
+                  QStringLiteral("0.1.0"))
 {
     m_aboutData.addAuthor(i18n("Friedrich W. H. Kossebau"), i18n("Author"), QStringLiteral("kossebau@kde.org"));
 }
