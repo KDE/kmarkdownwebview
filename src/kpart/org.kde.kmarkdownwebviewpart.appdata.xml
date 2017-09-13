@@ -6,6 +6,7 @@
   <name>Markdown Viewer KPart</name>
   <name xml:lang="ca">KPart del visor de Markdown</name>
   <name xml:lang="ca-valencia">KPart del visor de Markdown</name>
+  <name xml:lang="cs">KPart pro prohlížení souborů Markdown</name>
   <name xml:lang="es">KPart del visor de Markdown</name>
   <name xml:lang="nl">Markdown-viewer van KPart</name>
   <name xml:lang="pt">KPart de Visualização do Markdown</name>
@@ -17,6 +18,7 @@
   <summary>Rendered display of Markdown files in KParts-using software</summary>
   <summary xml:lang="ca">Mostra renderitzats els fitxers de Markdown en el programari que utilitza les KParts</summary>
   <summary xml:lang="ca-valencia">Mostra renderitzats els fitxers de Markdown en el programari que utilitza les KParts</summary>
+  <summary xml:lang="cs">Zpracované zobrazení Markdown v aplikacích využívajících KParts</summary>
   <summary xml:lang="es">Pantalla de visualización de archivos Markdown en software que usa KParts</summary>
   <summary xml:lang="nl">Toonbare weergave van Markdown-bestanden in software die KParts gebruikt</summary>
   <summary xml:lang="pt">Apresentação desenhada dos ficheiros de Markdown nas aplicações baseadas no KParts</summary>
