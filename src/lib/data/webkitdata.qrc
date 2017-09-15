@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/kmarkdownview">
+    <qresource prefix="/kmarkdownwebview">
         <file alias="index.html">webkitindex.html</file>
         <file alias="marked.min.js">3rdparty/marked.min.js</file>
         <file alias="markdown.css">3rdparty/markdown.css</file>
