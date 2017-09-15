@@ -25,7 +25,7 @@ class KMarkdownViewPage : public QWebEnginePage
     Q_OBJECT
 
 public:
-    explicit KMarkdownViewPage(QObject* parent);
+    KMarkdownViewPage(QWebEngineProfile* profile, QObject* parent);
     ~KMarkdownViewPage() override;
 
 Q_SIGNALS:

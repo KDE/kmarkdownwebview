@@ -19,8 +19,8 @@
 
 #include <QWebEngineSettings>
 
-KMarkdownViewPage::KMarkdownViewPage(QObject* parent)
-    : QWebEnginePage(parent)
+KMarkdownViewPage::KMarkdownViewPage(QWebEngineProfile* profile, QObject* parent)
+    : QWebEnginePage(profile, parent)
 {
     settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
     settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);

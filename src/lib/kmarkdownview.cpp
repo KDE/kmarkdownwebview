@@ -32,6 +32,7 @@
 #else
 #include <QWebChannel>
 #include <QWebEngineContextMenuData>
+#include <QWebEngineProfile>
 #endif
 #include <QContextMenuEvent>
 
@@ -41,7 +42,7 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     : QWebView(parent)
 #else
     : QWebEngineView(parent)
-    , m_viewPage(new KMarkdownViewPage(this))
+    , m_viewPage(new KMarkdownViewPage(new QWebEngineProfile(this), this))
 #endif
     , m_htmlView(new KMarkdownHtmlView(this))
     , m_sourceDocument(sourceDocument)
