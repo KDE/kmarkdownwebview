@@ -83,6 +83,19 @@ void KMarkdownView::setScrollPosition(int x, int y)
     m_htmlView->requestSetScrollPosition(x, y);
 }
 
+void KMarkdownView::renderPage(QPainter* painter, const QRect& clip)
+{
+#ifdef USE_QTWEBKIT
+    auto mainFrame = page()->mainFrame();
+    page()->setViewportSize(mainFrame->contentsSize());
+    mainFrame->render(painter, QWebFrame::ContentsLayer, clip);
+#else
+    Q_UNUSED(painter);
+    Q_UNUSED(clip);
+    // TODO: used for thumbnailing of page, but QtWebEngine seems to not yet support offscreen rendering
+#endif
+}
+
 void KMarkdownView::contextMenuEvent(QContextMenuEvent* event)
 {
 #ifdef USE_QTWEBKIT

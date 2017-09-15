@@ -62,6 +62,7 @@ public:
     bool canCopyText() const;
     QPoint scrollPosition() const;
     void setScrollPosition(int x, int y);
+    void renderPage(QPainter* painter, const QRect& clip);
 
 Q_SIGNALS:
     void openUrlRequested(const QUrl& url);

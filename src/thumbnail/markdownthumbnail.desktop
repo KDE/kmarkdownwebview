@@ -1,0 +1,9 @@
+[Desktop Entry]
+Type=Service
+Name=Markdown Files
+X-KDE-ServiceTypes=ThumbCreator
+MimeType=text/markdown;
+X-KDE-Protocols=KIO
+X-KDE-Library=markdownthumbnail
+# CacheThumbnail=true
+CacheThumbnail=false

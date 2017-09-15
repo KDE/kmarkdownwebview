@@ -19,6 +19,7 @@ set(KF5_MIN_VERSION "5.23.0")
 find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     I18n
     Parts
+    KIO # for thumbnails
 )
 
 # pass -DUSE_QTWEBKIT=TRUE to enforce usage of webkit
