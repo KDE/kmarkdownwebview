@@ -1,6 +1,12 @@
 [Desktop Entry]
 Type=Service
 Name=Markdown Files
+Name[ca]=Fitxers del Markdown
+Name[nl]=Markdown-bestanden
+Name[pt]=Ficheiros de Markdown
+Name[sv]=Markdown-filer
+Name[uk]=Файли Markdown
+Name[x-test]=xxMarkdown Filesxx
 X-KDE-ServiceTypes=ThumbCreator
 MimeType=text/markdown;
 X-KDE-Protocols=KIO
