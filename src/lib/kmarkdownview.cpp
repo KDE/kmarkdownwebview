@@ -121,7 +121,7 @@ void KMarkdownView::contextMenuEvent(QContextMenuEvent* event)
 #ifdef USE_QTWEBKIT
         hasSelection = result.isContentSelected();
 #else
-        hasSelection = result.selectedText().isEmpty();
+        hasSelection = !result.selectedText().isEmpty();
 #endif
     } else {
 #ifdef USE_QTWEBKIT
