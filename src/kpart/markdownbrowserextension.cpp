@@ -32,7 +32,7 @@ MarkdownBrowserExtension::MarkdownBrowserExtension(MarkdownPart* part)
     , m_part(part)
     , m_contextMenuActionCollection(new KActionCollection(this))
 {
-     emit enableAction("copy", false);
+     emit enableAction("copy", m_part->view()->isCopyTextEnabled());
 }
 
 void MarkdownBrowserExtension::copy()
@@ -40,9 +40,9 @@ void MarkdownBrowserExtension::copy()
     m_part->copySelection();
 }
 
-void MarkdownBrowserExtension::updateEditActions()
+void MarkdownBrowserExtension::updateCopyAction(bool enabled)
 {
-    emit enableAction("copy", m_part->view()->canCopyText());
+    emit enableAction("copy", enabled);
 }
 
 void MarkdownBrowserExtension::requestOpenUrl(const QUrl& url)
@@ -77,8 +77,7 @@ void MarkdownBrowserExtension::requestContextMenu(const QPoint& globalPos,
 
             QList<QAction*> selectActions;
 
-            auto action = m_part->createCopySelectionAction(m_contextMenuActionCollection);
-            m_contextMenuActionCollection->addAction(QStringLiteral("copy"), action);
+            auto action = m_part->copySelectionAction();
             selectActions.append(action);
 
             mapAction.insert(QStringLiteral("editactions"), selectActions);
@@ -104,8 +103,7 @@ void MarkdownBrowserExtension::requestContextMenu(const QPoint& globalPos,
         QList<QAction*> linkActions;
 
         if (hasSelection) {
-            auto action = m_part->createCopySelectionAction(m_contextMenuActionCollection);
-            m_contextMenuActionCollection->addAction(QStringLiteral("copy"), action);
+            auto action = m_part->copySelectionAction();
             linkActions.append(action);
         }
 

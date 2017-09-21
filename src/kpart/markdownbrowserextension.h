@@ -37,7 +37,7 @@ public:
 public Q_SLOTS:
     void copy();
 
-    void updateEditActions();
+    void updateCopyAction(bool enabled);
     void requestOpenUrl(const QUrl& url);
     void requestOpenUrlNewWindow(const QUrl& url);
     void requestContextMenu(const QPoint& globalPos, const QUrl& linkUrl, const QString& linkText,

@@ -59,8 +59,8 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
     if (modus == BrowserViewModus) {
         connect(m_widget, &KMarkdownView::openUrlRequested,
                 m_browserExtension, &MarkdownBrowserExtension::requestOpenUrl);
-        connect(m_widget, &KMarkdownView::selectionChanged,
-                m_browserExtension, &MarkdownBrowserExtension::updateEditActions);
+        connect(m_widget, &KMarkdownView::copyTextEnabledChanged,
+                m_browserExtension, &MarkdownBrowserExtension::updateCopyAction);
 //         connect(m_widget, &KMarkdownView::linkMiddleOrCtrlClicked,
 //                 this, &MarkdownBrowserExtension::requestOpenUrlNewWindow);
         connect(m_widget, &KMarkdownView::contextMenuRequested,
@@ -72,17 +72,29 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
                 this, &MarkdownPart::requestContextMenu);
     }
 
-    setupActions();
+    setupActions(modus);
 }
 
 MarkdownPart::~MarkdownPart() = default;
 
 
-void MarkdownPart::setupActions()
+void MarkdownPart::setupActions(Modus modus)
 {
-    auto action = KStandardAction::selectAll(this, &MarkdownPart::selectAll, actionCollection());
-    action->setShortcutContext(Qt::WidgetShortcut);
-    m_widget->addAction(action);
+    // only register to xmlgui if not in browser mode
+    QObject* copySelectionActionParent = (modus == BrowserViewModus) ? static_cast<QObject*>(this) : static_cast<QObject*>(actionCollection());
+    m_copySelectionAction = KStandardAction::copy(copySelectionActionParent);
+    m_copySelectionAction->setText(i18n("&Copy Text"));
+    m_copySelectionAction->setEnabled(m_widget->isCopyTextEnabled());
+    connect(m_widget, &KMarkdownView::copyTextEnabledChanged,
+            m_copySelectionAction, &QAction::setEnabled);
+    connect(m_copySelectionAction, &QAction::triggered, this, &MarkdownPart::copySelection);
+
+    m_selectAllAction = KStandardAction::selectAll(this, &MarkdownPart::selectAll, actionCollection());
+    m_selectAllAction->setEnabled(m_widget->isSelectAllEnabled());
+    connect(m_widget, &KMarkdownView::selectAllEnabledChanged,
+            m_selectAllAction, &QAction::setEnabled);
+    m_selectAllAction->setShortcutContext(Qt::WidgetShortcut);
+    m_widget->addAction(m_selectAllAction);
 }
 
 bool MarkdownPart::openFile()
@@ -196,7 +208,9 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
 
     if (!linkUrl.isValid()) {
         if (hasSelection) {
-            menu.addAction(createCopySelectionAction(&menu));
+            menu.addAction(m_copySelectionAction);
+        } else {
+            menu.addAction(m_selectAllAction);
         }
     } else {
         auto action = menu.addAction(i18n("Open Link"));
@@ -221,13 +235,9 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
     }
 }
 
-QAction* MarkdownPart::createCopySelectionAction(QObject* parent)
+QAction* MarkdownPart::copySelectionAction() const
 {
-    auto action = KStandardAction::copy(parent);
-    action->setText(i18n("&Copy Text"));
-    connect(action, &QAction::triggered, this, &MarkdownPart::copySelection);
-
-    return action;
+    return m_copySelectionAction;
 }
 
 QAction* MarkdownPart::createCopyEmailAddressAction(QObject* parent, const QUrl& mailtoUrl)

@@ -56,6 +56,15 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     connect(m_viewPage, &KMarkdownViewPage::openUrlRequested, this, &KMarkdownView::openUrlRequested);
 #endif
 
+    auto copyAction = pageAction(WebPage::Copy);
+    connect(copyAction, &QAction::changed, this, [&] {
+        emit copyTextEnabledChanged(pageAction(WebPage::Copy)->isEnabled());
+    });
+    auto selectAllAction = pageAction(WebPage::SelectAll);
+    connect(selectAllAction, &QAction::changed, this, [&] {
+        emit selectAllEnabledChanged(pageAction(WebPage::SelectAll)->isEnabled());
+    });
+
 #ifdef USE_QTWEBKIT
     auto frame = page->mainFrame();
     frame->addToJavaScriptWindowObject(QStringLiteral("sourceTextObject"), m_sourceDocument);

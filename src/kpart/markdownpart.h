@@ -52,7 +52,7 @@ public:
 
     KMarkdownView* view() const;
 
-    QAction* createCopySelectionAction(QObject* parent);
+    QAction* copySelectionAction() const;
     QAction* createCopyEmailAddressAction(QObject* parent, const QUrl& mailtoUrl);
     QAction* createCopyLinkTextAction(QObject* parent, const QString& text);
     QAction* createCopyLinkUrlAction(QObject* parent);
@@ -70,7 +70,7 @@ protected: // KParts::ReadOnlyPart API
     bool closeUrl() override;
 
 private:
-    void setupActions();
+    void setupActions(Modus modus);
     void prepareViewStateRestoringOnReload();
     void restoreScrollPosition();
 
@@ -86,6 +86,8 @@ private:
 private:
     MarkdownSourceDocument* m_sourceDocument;
     KMarkdownView* m_widget;
+    QAction* m_copySelectionAction;
+    QAction* m_selectAllAction;
 
     MarkdownBrowserExtension* const m_browserExtension;
 

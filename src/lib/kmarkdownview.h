@@ -59,12 +59,15 @@ public:
     void copyLinkUrl();
     void saveLinkAs();
     void selectAllText();
-    bool canCopyText() const;
+    bool isCopyTextEnabled() const;
+    bool isSelectAllEnabled() const;
     QPoint scrollPosition() const;
     void setScrollPosition(int x, int y);
     void renderPage(QPainter* painter, const QRect& clip);
 
 Q_SIGNALS:
+    void copyTextEnabledChanged(bool enabled);
+    void selectAllEnabledChanged(bool enabled);
     void openUrlRequested(const QUrl& url);
     void contextMenuRequested(const QPoint& globalPos, const QUrl& linkUrl, const QString& linkText,
                               bool hasSelection, bool forcesNewWindow);
@@ -107,9 +110,14 @@ inline void KMarkdownView::selectAllText()
     triggerPageAction(WebPage::SelectAll);
 }
 
-inline bool KMarkdownView::canCopyText() const
+inline bool KMarkdownView::isCopyTextEnabled() const
 {
     return pageAction(WebPage::Copy)->isEnabled();
+}
+
+inline bool KMarkdownView::isSelectAllEnabled() const
+{
+    return pageAction(WebPage::SelectAll)->isEnabled();
 }
 
 #endif
