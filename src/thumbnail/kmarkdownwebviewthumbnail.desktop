@@ -2,6 +2,7 @@
 Type=Service
 Name=Markdown Files
 Name[ca]=Fitxers del Markdown
+Name[it]=File Markdown
 Name[nl]=Markdown-bestanden
 Name[pt]=Ficheiros de Markdown
 Name[sv]=Markdown-filer
