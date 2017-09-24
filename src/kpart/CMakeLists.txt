@@ -15,7 +15,7 @@ target_link_libraries(kmarkdownwebviewpart
 )
 
 install( TARGETS kmarkdownwebviewpart  DESTINATION ${KDE_INSTALL_PLUGINDIR})
-install(PROGRAMS kmarkdownwebviewpart.desktop  DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES kmarkdownwebviewpart.desktop  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
 
 install(
   FILES kmarkdownwebviewpartui.rc
