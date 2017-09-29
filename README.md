@@ -12,7 +12,7 @@ The software should serve as intermediate solution until some native Qt-based im
 
 ### Deployed 3rd-party software
 
-[markdown.css](http://kevinburke.bitbucket.org/markdowncss/) is a markdown-friendly stylesheet created by Kevin Burke. [marked.min.js](https://github.com/chjj/marked) is a markdown parser and compiler designed for speed written by Christopher Jeffrey and qwebchannel.js is part of the [QWebChannel](https://doc.qt.io/qt-5/qwebchannel.html) module.
+[markdown.css](https://kevinburke.bitbucket.io/markdowncss/) is a markdown-friendly stylesheet created by Kevin Burke. [marked.min.js](https://github.com/chjj/marked) is a markdown parser and compiler designed for speed written by Christopher Jeffrey and qwebchannel.js is part of the [QWebChannel](https://doc.qt.io/qt-5/qwebchannel.html) module.
 
 ## Building
 
@@ -26,4 +26,4 @@ Please report bugs and feature requests in the [KDE issue tracker](https://bugs.
 
 Feedback welcome, email kossebau AT kde org or catch me on freenode irc in #kdevelop.
 
-(Note: This file was happily edited with the support of this plugin. )
+(*Note*: This file was happily edited with the support of this plugin.)
