@@ -16,7 +16,7 @@ The software should serve as intermediate solution until some native Qt-based im
 
 ## Building
 
-KMarkdownWebView can be built both with QtWebEngine (preferred by the builds ystem) and QtWebKit. Pass `-DUSE_QTWEBKIT=TRUE` to CMake to enforce the use of QtWebKit.
+KMarkdownWebView can be built both with QtWebEngine (preferred by the build system) and QtWebKit. Pass `-DUSE_QTWEBKIT=TRUE` to CMake to enforce the use of QtWebKit.
 
 ## Issues
 
