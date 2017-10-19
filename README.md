@@ -3,10 +3,10 @@
 ## Introduction
 
 This repository contains software for the rendered display of Markdown documents:
-* a Markdown viewer [KParts](https://api.kde.org/frameworks/kparts/html/index.html) plugin which allows KParts-using applications to display files in Markdown format in the target format
-* a Markdown file [KIO thumbnail generator](https://api.kde.org/frameworks/kio/html/classThumbCreator.html) plugin which allows KIO-powered file managers & dialogs to show thumbnails and previews of files in Markdown format in the target format (currently only available when building against QtWebKit)
+* a Markdown viewer [KParts](https://api.kde.org/frameworks/kparts/html/index.html) plugin, which allows KParts-using applications to display files in Markdown format in the target format
+* a Markdown file [KIO thumbnail generator](https://api.kde.org/frameworks/kio/html/classThumbCreator.html) plugin, which allows KIO-powered file managers & dialogs to show thumbnails and previews of files in Markdown format in the target format (currently only available when building against QtWebKit)
 
-The software is inspired by the [WebEngine Markdown Editor Example](ttps://doc.qt.io/qt-5/qtwebengine-webenginewidgets-markdowneditor-example.html) from the Qt documentation. The plain text file data is fed into a webpage via a QWebChannel or QtWebKit bridge, where a JavaScript library creates HTML from it which then is displayed.
+The software is inspired by the [WebEngine Markdown Editor Example](https://doc.qt.io/qt-5/qtwebengine-webenginewidgets-markdowneditor-example.html) from the Qt documentation. The plain text file data is fed into a webpage via a QWebChannel or QtWebKit bridge, where a JavaScript library creates HTML from it which then is displayed.
 
 The software should serve as intermediate solution until some native Qt-based implementation is done.
 
