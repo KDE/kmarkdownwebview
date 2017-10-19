@@ -17,22 +17,50 @@
 
 #include "kmarkdownviewpage.h"
 
+#ifdef USE_QTWEBKIT
+#include <QWebSettings>
+#include <QNetworkRequest>
+#else
 #include <QWebEngineSettings>
+#endif
 
+#ifdef USE_QTWEBKIT
+KMarkdownViewPage::KMarkdownViewPage(QObject* parent)
+    : QWebPage(parent)
+{
+#else
 KMarkdownViewPage::KMarkdownViewPage(QWebEngineProfile* profile, QObject* parent)
     : QWebEnginePage(profile, parent)
 {
-    settings()->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
-    settings()->setAttribute(QWebEngineSettings::PluginsEnabled, false);
-    settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, false);
-    settings()->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
+#endif
+    settings()->setAttribute(WebSettings::JavascriptEnabled, true);
+    settings()->setAttribute(WebSettings::PluginsEnabled, false);
+    settings()->setAttribute(WebSettings::LocalContentCanAccessRemoteUrls, false);
+    settings()->setAttribute(WebSettings::LocalContentCanAccessFileUrls, true);
 }
-
 
 KMarkdownViewPage::~KMarkdownViewPage() = default;
 
+#ifdef USE_QTWEBKIT
+bool KMarkdownViewPage::acceptNavigationRequest(QWebFrame* frame,
+                                                const QNetworkRequest& request,
+                                                NavigationType type)
+{
+    Q_UNUSED(type);
+    Q_UNUSED(frame);
+
+    const auto url = request.url();
+    // Only allow qrc:/index.html.
+    if (url.scheme() == QLatin1String("qrc")) {
+        return true;
+    }
+
+    emit openUrlRequested(url);
+    return false;
+}
+#else
 bool KMarkdownViewPage::acceptNavigationRequest(const QUrl& url,
-                                                QWebEnginePage::NavigationType type,
+                                                NavigationType type,
                                                 bool isMainFrame)
 {
     Q_UNUSED(type);
@@ -46,3 +74,4 @@ bool KMarkdownViewPage::acceptNavigationRequest(const QUrl& url,
     emit openUrlRequested(url);
     return false;
 }
+#endif

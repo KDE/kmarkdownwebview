@@ -1,14 +1,9 @@
 set(kmarkdownview_SRCS
+    kmarkdownviewpage.cpp
     kmarkdownview.cpp
     kabstractmarkdownsourcedocument.cpp
     kmarkdownhtmlview.cpp
 )
-
-if(NOT USE_QTWEBKIT)
-list(APPEND kmarkdownview_SRCS
-    kmarkdownviewpage.cpp
-)
-endif()
 
 if(USE_QTWEBKIT)
 qt5_add_resources(kmarkdownview_SRCS

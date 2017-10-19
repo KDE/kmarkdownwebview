@@ -17,10 +17,7 @@
 
 #include "kmarkdownview.h"
 
-#ifndef USE_QTWEBKIT
 #include "kmarkdownviewpage.h"
-#endif
-
 #include "kabstractmarkdownsourcedocument.h"
 #include "kmarkdownhtmlview.h"
 
@@ -39,6 +36,7 @@
 KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QWidget* parent)
 #ifdef USE_QTWEBKIT
     : QWebView(parent)
+    , m_viewPage(new KMarkdownViewPage(this))
 #else
     : QWebEngineView(parent)
     , m_viewPage(new KMarkdownViewPage(new QWebEngineProfile(this), this))
@@ -46,14 +44,8 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     , m_htmlView(new KMarkdownHtmlView(this))
     , m_sourceDocument(sourceDocument)
 {
-#ifdef USE_QTWEBKIT
-    auto page = this->page();
-    page->setLinkDelegationPolicy(QWebPage::DelegateAllLinks);
-    connect(this, &QWebView::linkClicked, this, &KMarkdownView::openUrlRequested);
-#else
     setPage(m_viewPage);
     connect(m_viewPage, &KMarkdownViewPage::openUrlRequested, this, &KMarkdownView::openUrlRequested);
-#endif
 
     auto copyAction = pageAction(WebPage::Copy);
     connect(copyAction, &QAction::changed, this, [&] {
@@ -65,7 +57,7 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     });
 
 #ifdef USE_QTWEBKIT
-    auto frame = page->mainFrame();
+    auto frame = m_viewPage->mainFrame();
     frame->addToJavaScriptWindowObject(QStringLiteral("sourceTextObject"), m_sourceDocument);
     frame->addToJavaScriptWindowObject(QStringLiteral("viewObject"), m_htmlView);
 #else

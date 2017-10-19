@@ -85,9 +85,7 @@ private:
 #endif
 
 private:
-#ifndef USE_QTWEBKIT
     KMarkdownViewPage* m_viewPage = nullptr;
-#endif
 
     KMarkdownHtmlView* const m_htmlView;
     KAbstractMarkdownSourceDocument* const m_sourceDocument;
