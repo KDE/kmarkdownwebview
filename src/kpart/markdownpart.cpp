@@ -19,6 +19,7 @@
 
 #include "markdownsourcedocument.h"
 #include "markdownbrowserextension.h"
+#include "searchtoolbar.h"
 
 #include <kmarkdownview.h>
 
@@ -33,17 +34,20 @@
 #include <QTextStream>
 #include <QMimeDatabase>
 #include <QBuffer>
+#include <QShortcut>
 #include <QDesktopServices>
 #include <QMimeData>
 #include <QClipboard>
 #include <QApplication>
 #include <QMenu>
+#include <QVBoxLayout>
 
 
 MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutData& aboutData, Modus modus)
     : KParts::ReadOnlyPart(parent)
     , m_sourceDocument(new MarkdownSourceDocument(this))
     , m_widget(new KMarkdownView(m_sourceDocument, parentWidget))
+    , m_searchToolBar(new SearchToolBar(m_widget, parentWidget))
     , m_browserExtension(new MarkdownBrowserExtension(this))
 {
     // set component data
@@ -51,7 +55,18 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
     setComponentData(aboutData);
 
     // set internal UI
-    setWidget(m_widget);
+    auto mainLayout = new QVBoxLayout;
+    mainLayout->setMargin(0);
+    mainLayout->setSpacing(0);
+
+    mainLayout->addWidget(m_widget);
+
+    m_searchToolBar->hide();
+    mainLayout->addWidget(m_searchToolBar);
+
+    auto mainWidget = new QWidget(parentWidget);
+    mainWidget->setLayout(mainLayout);
+    setWidget(mainWidget);
 
     // set KXMLUI resource file
     setXMLFile(QStringLiteral("kmarkdownwebviewpartui.rc"));
@@ -95,6 +110,14 @@ void MarkdownPart::setupActions(Modus modus)
             m_selectAllAction, &QAction::setEnabled);
     m_selectAllAction->setShortcutContext(Qt::WidgetShortcut);
     m_widget->addAction(m_selectAllAction);
+
+    m_searchAction = KStandardAction::find(m_searchToolBar, &SearchToolBar::startSearch, actionCollection());
+    m_searchAction->setEnabled(false);
+    m_widget->addAction(m_searchAction);
+
+    auto closeFindBarShortcut = new QShortcut(QKeySequence(Qt::Key_Escape), widget());
+    closeFindBarShortcut->setContext(Qt::WidgetWithChildrenShortcut);
+    connect(closeFindBarShortcut, &QShortcut::activated, m_searchToolBar, &SearchToolBar::hide);
 }
 
 bool MarkdownPart::openFile()
@@ -115,6 +138,7 @@ bool MarkdownPart::openFile()
     connect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
 
     m_sourceDocument->setText(text);
+    m_searchAction->setEnabled(true);
 
     return true;
 }
@@ -155,6 +179,7 @@ bool MarkdownPart::doCloseStream()
     connect(m_widget, &KMarkdownView::renderingDone, this, &MarkdownPart::restoreScrollPosition);
 
     m_sourceDocument->setText(text);
+    m_searchAction->setEnabled(true);
 
     m_streamedData.clear();
     return true;
@@ -170,6 +195,7 @@ bool MarkdownPart::closeUrl()
     }
 
     m_sourceDocument->setText(QString());
+    m_searchAction->setEnabled(false);
     m_streamedData.clear();
 
     return ReadOnlyPart::closeUrl();

@@ -24,8 +24,10 @@
 // Qt headers
 #ifdef USE_QTWEBKIT
 #include <QWebView>
+#include <QWebPage>
 #else
 #include <QWebEngineView>
+#include <QWebEnginePage>
 #endif
 #include <QAction>
 
@@ -64,6 +66,7 @@ public:
     QPoint scrollPosition() const;
     void setScrollPosition(int x, int y);
     void renderPage(QPainter* painter, const QRect& clip);
+    void findText(const QString& text, WebPage::FindFlags findFlags = {});
 
 Q_SIGNALS:
     void copyTextEnabledChanged(bool enabled);

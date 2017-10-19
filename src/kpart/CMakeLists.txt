@@ -1,9 +1,12 @@
 set(markdownpart_SRCS
+    searchtoolbar.cpp
     markdownpartfactory.cpp
     markdownpart.cpp
     markdownsourcedocument.cpp
     markdownbrowserextension.cpp
 )
+
+ki18n_wrap_ui(markdownpart_SRCS searchtoolbar.ui)
 
 add_library(kmarkdownwebviewpart  MODULE ${markdownpart_SRCS})
 

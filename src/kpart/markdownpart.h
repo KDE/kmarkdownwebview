@@ -28,6 +28,7 @@
 class MarkdownBrowserExtension;
 class MarkdownSourceDocument;
 class KMarkdownView;
+class SearchToolBar;
 class KAboutData;
 
 class MarkdownPart : public KParts::ReadOnlyPart
@@ -86,8 +87,10 @@ private:
 private:
     MarkdownSourceDocument* m_sourceDocument;
     KMarkdownView* m_widget;
+    SearchToolBar* m_searchToolBar;
     QAction* m_copySelectionAction;
     QAction* m_selectAllAction;
+    QAction* m_searchAction;
 
     MarkdownBrowserExtension* const m_browserExtension;
 

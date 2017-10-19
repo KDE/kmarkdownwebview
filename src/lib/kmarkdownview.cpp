@@ -26,7 +26,6 @@
 
 // Qt
 #ifdef USE_QTWEBKIT
-#include <QWebPage>
 #include <QWebFrame>
 #include <QWebHitTestResult>
 #else
@@ -103,6 +102,11 @@ void KMarkdownView::renderPage(QPainter* painter, const QRect& clip)
     Q_UNUSED(clip);
     // TODO: used for thumbnailing of page, but QtWebEngine seems to not yet support offscreen rendering
 #endif
+}
+
+void KMarkdownView::findText(const QString& text, WebPage::FindFlags findFlags)
+{
+    page()->findText(text, findFlags);
 }
 
 void KMarkdownView::contextMenuEvent(QContextMenuEvent* event)
