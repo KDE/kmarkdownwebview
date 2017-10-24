@@ -47,23 +47,35 @@ SearchToolBar::~SearchToolBar() = default;
 
 void SearchToolBar::searchNext()
 {
+    const auto text = m_ui->searchTextEdit->text();
+    if (text.isEmpty()) {
+        startSearch();
+        return;
+    }
+
     KMarkdownView::WebPage::FindFlags findFlags = {};
     if (m_ui->matchCaseCheckButton->isChecked()) {
         findFlags |= KMarkdownView::WebPage::FindCaseSensitively;
     }
 
-    m_markdownView->findText(m_ui->searchTextEdit->text(), findFlags);
+    m_markdownView->findText(text, findFlags);
 
 }
 
 void SearchToolBar::searchPrevious()
 {
+    const auto text = m_ui->searchTextEdit->text();
+    if (text.isEmpty()) {
+        startSearch();
+        return;
+    }
+
     KMarkdownView::WebPage::FindFlags findFlags = {KMarkdownView::WebPage::FindBackward};
     if (m_ui->matchCaseCheckButton->isChecked()) {
         findFlags |= KMarkdownView::WebPage::FindCaseSensitively;
     }
 
-    m_markdownView->findText(m_ui->searchTextEdit->text(), findFlags);
+    m_markdownView->findText(text, findFlags);
 }
 
 void SearchToolBar::startSearch()

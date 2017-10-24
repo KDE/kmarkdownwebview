@@ -115,6 +115,14 @@ void MarkdownPart::setupActions(Modus modus)
     m_searchAction->setEnabled(false);
     m_widget->addAction(m_searchAction);
 
+    m_searchNextAction = KStandardAction::findNext(m_searchToolBar, &SearchToolBar::searchNext, actionCollection());
+    m_searchNextAction->setEnabled(false);
+    m_widget->addAction(m_searchNextAction);
+
+    m_searchPreviousAction = KStandardAction::findPrev(m_searchToolBar, &SearchToolBar::searchPrevious, actionCollection());
+    m_searchPreviousAction->setEnabled(false);
+    m_widget->addAction(m_searchPreviousAction);
+
     auto closeFindBarShortcut = new QShortcut(QKeySequence(Qt::Key_Escape), widget());
     closeFindBarShortcut->setContext(Qt::WidgetWithChildrenShortcut);
     connect(closeFindBarShortcut, &QShortcut::activated, m_searchToolBar, &SearchToolBar::hide);
@@ -139,6 +147,8 @@ bool MarkdownPart::openFile()
 
     m_sourceDocument->setText(text);
     m_searchAction->setEnabled(true);
+    m_searchNextAction->setEnabled(true);
+    m_searchPreviousAction->setEnabled(true);
 
     return true;
 }
@@ -180,6 +190,8 @@ bool MarkdownPart::doCloseStream()
 
     m_sourceDocument->setText(text);
     m_searchAction->setEnabled(true);
+    m_searchNextAction->setEnabled(true);
+    m_searchPreviousAction->setEnabled(true);
 
     m_streamedData.clear();
     return true;
@@ -196,6 +208,8 @@ bool MarkdownPart::closeUrl()
 
     m_sourceDocument->setText(QString());
     m_searchAction->setEnabled(false);
+    m_searchNextAction->setEnabled(false);
+    m_searchPreviousAction->setEnabled(false);
     m_streamedData.clear();
 
     return ReadOnlyPart::closeUrl();

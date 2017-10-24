@@ -38,10 +38,10 @@ public:
 
 public Q_SLOTS:
     void startSearch();
-
-private Q_SLOTS:
     void searchNext();
     void searchPrevious();
+
+private Q_SLOTS:
     void searchIncrementally();
 
 private:

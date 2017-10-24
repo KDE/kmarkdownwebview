@@ -91,6 +91,8 @@ private:
     QAction* m_copySelectionAction;
     QAction* m_selectAllAction;
     QAction* m_searchAction;
+    QAction* m_searchNextAction;
+    QAction* m_searchPreviousAction;
 
     MarkdownBrowserExtension* const m_browserExtension;
 

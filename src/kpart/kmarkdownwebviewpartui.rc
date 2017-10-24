@@ -7,6 +7,8 @@
     <Action name="edit_select_all"/>
     <Separator/>
     <Action name="edit_find"/>
+    <Action name="edit_find_next"/>
+    <Action name="edit_find_prev"/>
 </Menu>
 </MenuBar>
 
