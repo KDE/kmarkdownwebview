@@ -2,5 +2,5 @@
 #define KMARKDOWNVIEW_CONFIG_H
 
 #cmakedefine USE_QTWEBKIT
-
+#cmakedefine DEBUG_WEB
 #endif

@@ -57,6 +57,9 @@ public:
     ~KMarkdownView() override;
 
 public:
+#ifdef DEBUG_WEB
+    void inspectElement();
+#endif
     void copySelection();
     void copyLinkUrl();
     void saveLinkAs();
@@ -90,6 +93,13 @@ private:
     KMarkdownHtmlView* const m_htmlView;
     KAbstractMarkdownSourceDocument* const m_sourceDocument;
 };
+
+#ifdef DEBUG_WEB
+inline void KMarkdownView::inspectElement()
+{
+    triggerPageAction(WebPage::InspectElement);
+}
+#endif
 
 inline void KMarkdownView::copySelection()
 {

@@ -37,6 +37,11 @@ KMarkdownViewPage::KMarkdownViewPage(QWebEngineProfile* profile, QObject* parent
     settings()->setAttribute(WebSettings::PluginsEnabled, false);
     settings()->setAttribute(WebSettings::LocalContentCanAccessRemoteUrls, false);
     settings()->setAttribute(WebSettings::LocalContentCanAccessFileUrls, true);
+#ifdef DEBUG_WEB
+#ifdef USE_QTWEBKIT
+    settings()->setAttribute(WebSettings::DeveloperExtrasEnabled, true);
+#endif
+#endif
 }
 
 KMarkdownViewPage::~KMarkdownViewPage() = default;

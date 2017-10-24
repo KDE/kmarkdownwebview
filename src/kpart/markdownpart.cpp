@@ -269,6 +269,10 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
             menu.addAction(createCopyLinkUrlAction(&menu));
         }
     }
+#ifdef DEBUG_WEB
+    auto action = menu.addAction(QStringLiteral("Inspect Element"));
+    connect(action, &QAction::triggered, m_widget, &KMarkdownView::inspectElement);
+#endif
 
     if (!menu.isEmpty()) {
         menu.exec(globalPos);
