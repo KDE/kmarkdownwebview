@@ -251,6 +251,9 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
             menu.addAction(m_copySelectionAction);
         } else {
             menu.addAction(m_selectAllAction);
+            if (m_searchToolBar->isHidden()) {
+                menu.addAction(m_searchAction);
+            }
         }
     } else {
         auto action = menu.addAction(i18n("Open Link"));
