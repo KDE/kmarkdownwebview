@@ -18,6 +18,14 @@ The software should serve as intermediate solution until some native Qt-based im
 
 KMarkdownWebView can be built both with QtWebEngine (preferred by the build system) and QtWebKit. Pass `-DUSE_QTWEBKIT=TRUE` to CMake to enforce the use of QtWebKit.
 
+## Using
+
+To use the KMarkdownWebView KParts plugin in a KParts-using applications, often you will need to configure that globally in the Plasma System Settings, and there in the "File Associations" page.
+Select the MIME type "text/markdown" and in the "Embedding" tab in the "Service Preference Order" group make sure "Markdown Web View (kmarkdownwebviewpart)" is on top of the list.
+
+To use the Markdown file KIO thumbnail generator plugin in KIO-powered file managers & dialogs, it needs to be enabled e.g. in Dolphin's Preferences, and there in the "General" page.
+Select the "Previews" tab and enable the entry for "Markdown Files".
+
 ## Issues
 
 Please report bugs and feature requests in the [KDE issue tracker](https://bugs.kde.org/enter_bug.cgi?product=kmarkdownwebview).
