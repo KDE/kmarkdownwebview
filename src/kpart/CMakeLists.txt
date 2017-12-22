@@ -26,6 +26,6 @@ install(
 )
 
 install(
-    FILES org.kde.kmarkdownwebviewpart.appdata.xml
+    FILES org.kde.kmarkdownwebviewpart.metainfo.xml
     DESTINATION ${KDE_INSTALL_METAINFODIR}
 )
