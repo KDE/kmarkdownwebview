@@ -46,6 +46,7 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
 {
     setPage(m_viewPage);
     connect(m_viewPage, &KMarkdownViewPage::openUrlRequested, this, &KMarkdownView::openUrlRequested);
+    connect(m_viewPage, &KMarkdownViewPage::linkHovered, this, &KMarkdownView::linkHovered);
 
     auto copyAction = pageAction(WebPage::Copy);
     connect(copyAction, &QAction::changed, this, [&] {

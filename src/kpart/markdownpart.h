@@ -79,6 +79,7 @@ private:
     void requestContextMenu(const QPoint& globalPos,
                             const QUrl& linkUrl, const QString& linkText,
                             bool hasSelection, bool forcesNewWindow);
+    void showHoveredLink(const QString& link);
 
     void copyLinkUrl();
     void saveLinkAs();

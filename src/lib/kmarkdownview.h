@@ -77,6 +77,7 @@ Q_SIGNALS:
     void openUrlRequested(const QUrl& url);
     void contextMenuRequested(const QPoint& globalPos, const QUrl& linkUrl, const QString& linkText,
                               bool hasSelection, bool forcesNewWindow);
+    void linkHovered(const QString& url);
     void renderingDone();
 
 protected:

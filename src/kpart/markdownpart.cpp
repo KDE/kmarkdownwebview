@@ -28,6 +28,8 @@
 #include <KActionCollection>
 #include <KStandardAction>
 #include <KLocalizedString>
+#include <KStringHandler>
+#include <KFileItem>
 
 // Qt
 #include <QFile>
@@ -86,6 +88,8 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
         connect(m_widget, &KMarkdownView::contextMenuRequested,
                 this, &MarkdownPart::requestContextMenu);
     }
+    connect(m_widget, &KMarkdownView::linkHovered,
+            this, &MarkdownPart::showHoveredLink);
 
     setupActions(modus);
 }
@@ -280,6 +284,34 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
     if (!menu.isEmpty()) {
         menu.exec(globalPos);
     }
+}
+
+void MarkdownPart::showHoveredLink(const QString& link)
+{
+    QString message;
+    KFileItem fileItem;
+
+    if (!link.isEmpty()) {
+        QUrl linkUrl(link);
+
+        // Protect the user against URL spoofing!
+        linkUrl.setUserName(QString());
+
+        const QString scheme = linkUrl.scheme();
+
+        if (scheme == QLatin1String("javascript")) {
+            message = KStringHandler::rsqueeze(link, 150);
+        } else {
+            message = linkUrl.toString();
+
+            if (QString::compare(scheme, QLatin1String("mailto"), Qt::CaseInsensitive) == 0) {
+                fileItem = KFileItem(linkUrl, QString(), KFileItem::Unknown);
+            }
+        }
+    }
+
+    emit m_browserExtension->mouseOverInfo(fileItem);
+    emit setStatusBarText(message);
 }
 
 QAction* MarkdownPart::copySelectionAction() const
