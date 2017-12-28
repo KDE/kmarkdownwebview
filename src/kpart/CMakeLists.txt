@@ -1,3 +1,6 @@
+
+configure_file(markdownpartconfig.h.cmake ${CMAKE_CURRENT_BINARY_DIR}/markdownpartconfig.h)
+
 set(markdownpart_SRCS
     searchtoolbar.cpp
     markdownpartfactory.cpp

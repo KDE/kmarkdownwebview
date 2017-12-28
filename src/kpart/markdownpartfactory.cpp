@@ -18,6 +18,7 @@
 #include "markdownpartfactory.h"
 
 #include "markdownpart.h"
+#include "markdownpartconfig.h"
 
 // KF
 #include <KLocalizedString>
@@ -26,7 +27,7 @@
 MarkdownPartFactory::MarkdownPartFactory()
     : m_aboutData(QStringLiteral("kmarkdownwebviewpart"),
                   i18n("KMarkdownWebViewPart"),
-                  QStringLiteral("0.3.0"),
+                  QStringLiteral(KMARKDOWNWEBVIEW_VERSION),
                   i18n("For the rendered display of Markdown files in a webpage-like layout"),
                   KAboutLicense::LGPL_V2_1
                  )
