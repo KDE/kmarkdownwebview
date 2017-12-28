@@ -8,6 +8,10 @@ set(markdownpart_SRCS
 
 ki18n_wrap_ui(markdownpart_SRCS searchtoolbar.ui)
 
+qt5_add_resources(markdownpart_SRCS
+    markdownpart.qrc
+)
+
 add_library(kmarkdownwebviewpart  MODULE ${markdownpart_SRCS})
 
 
@@ -19,11 +23,6 @@ target_link_libraries(kmarkdownwebviewpart
 
 install( TARGETS kmarkdownwebviewpart  DESTINATION ${KDE_INSTALL_PLUGINDIR})
 install(FILES kmarkdownwebviewpart.desktop  DESTINATION ${KDE_INSTALL_KSERVICES5DIR})
-
-install(
-  FILES kmarkdownwebviewpartui.rc
-  DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/kmarkdownwebviewpart
-)
 
 install(
     FILES org.kde.kmarkdownwebviewpart.metainfo.xml
