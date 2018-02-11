@@ -2,6 +2,6 @@
     <qresource prefix="/kmarkdownwebview">
         <file alias="index.html">webkitindex.html</file>
         <file alias="marked.min.js">3rdparty/marked/marked.min.js</file>
-        <file alias="markdown.css">3rdparty/markdown.css</file>
+        <file alias="markdown.css">3rdparty/markdown.css/markdown.css</file>
     </qresource>
 </RCC>
