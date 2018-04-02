@@ -3,6 +3,7 @@
 ## Introduction
 
 This repository contains software for the rendered display of Markdown documents:
+
 * a Markdown viewer [KParts](https://api.kde.org/frameworks/kparts/html/index.html) plugin, which allows KParts-using applications to display files in Markdown format in the target format
 * a Markdown file [KIO thumbnail generator](https://api.kde.org/frameworks/kio/html/classThumbCreator.html) plugin, which allows KIO-powered file managers & dialogs to show thumbnails and previews of files in Markdown format in the target format (currently only available when building against QtWebKit)
 
@@ -12,7 +13,9 @@ The software should serve as intermediate solution until some native Qt-based im
 
 ### Deployed 3rd-party software
 
-[markdown.css](https://kevinburke.bitbucket.io/markdowncss/) is a markdown-friendly stylesheet created by Kevin Burke. [marked.min.js](https://github.com/chjj/marked) is a markdown parser and compiler designed for speed written by Christopher Jeffrey and qwebchannel.js is part of the [QWebChannel](https://doc.qt.io/qt-5/qwebchannel.html) module.
+[markdown.css](https://kevinburke.bitbucket.io/markdowncss/) is a markdown-friendly stylesheet created by Kevin Burke.
+[Marked](https://github.com/markedjs/marked) is a markdown parser and compiler designed for speed written by Christopher Jeffrey.
+And qwebchannel.js is part of the [QWebChannel](https://doc.qt.io/qt-5/qwebchannel.html) module.
 
 ## Building
 
