@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(kmarkdownwebview VERSION 0.5.1)
+project(kmarkdownwebview VERSION 0.5.2)
 
 set(REQUIRED_ECM_VERSION "5.23.0")
 find_package(ECM ${REQUIRED_ECM_VERSION} REQUIRED NO_MODULE)
