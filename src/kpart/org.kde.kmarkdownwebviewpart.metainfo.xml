@@ -24,6 +24,7 @@
   <name xml:lang="es">KPart del visor de Markdown</name>
   <name xml:lang="fi">Markdown-katseluosa</name>
   <name xml:lang="fr">Composant KDE de rendu Markdown</name>
+  <name xml:lang="gl">KPart de visor de Markdown</name>
   <name xml:lang="it">KPart di visualizzazione Markdown</name>
   <name xml:lang="ko">Markdown 뷰어 KPart</name>
   <name xml:lang="nl">Markdown-viewer van KPart</name>
@@ -46,6 +47,7 @@
   <summary xml:lang="es">Pantalla de visualización de archivos Markdown en software que usa KParts</summary>
   <summary xml:lang="fi">Näyttää Markdown-tiedostoja aseteltuna KParts-ohjelmissa</summary>
   <summary xml:lang="fr">Rendu à l'écran de fichiers Markdown dans les logiciels utilisant les composants KDE.</summary>
+  <summary xml:lang="gl">Visualización renderizada de ficheiros Markdown en software que usa KParts.</summary>
   <summary xml:lang="it">Visualizzazione formattata di file Markdown in software che usano KPart</summary>
   <summary xml:lang="ko">KParts를 사용하는 프로그램에서 Markdown 파일을 렌더링하여 표시합니다</summary>
   <summary xml:lang="nl">Toonbare weergave van Markdown-bestanden in software die KParts gebruikt</summary>
@@ -68,6 +70,7 @@
     <p xml:lang="es">El visor KPart de Markdown permite que el software que usa KParts muestre archivos en formato Markdown en un visor.</p>
     <p xml:lang="fi">Markdown-katseluosa antaa KParts-sovelluksille mahdollisuuden näyttää Markdown-tiedostot asetellussa muodossa.</p>
     <p xml:lang="fr">Le composant KDE de Markdown permet aux logiciels utilisant les composants KDE d'afficher des fichiers au format Markdown dans un rendu à l'écran.</p>
+    <p xml:lang="gl">O KPart de visor de Markdown permite ao software que usa KParts mostrar ficheiros en formato Markdown nunha vista renderizada.</p>
     <p xml:lang="it">Visualizzatore KPart per Markdown permette al software che usa KPart di mostrare file in formato Markdown resi in un vista.</p>
     <p xml:lang="ko">Markdown 뷰어 KPart를 사용하면 KParts를 사용하는 소프트웨어에서 Markdown 형식을 렌더링해서 볼 수 있습니다.</p>
     <p xml:lang="nl">De Markdownviewer van KPart stelt software die KPats gebruikt in staat bestanden in Markdown-formaat in een toonbare weergave.</p>
