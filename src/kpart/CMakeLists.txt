@@ -16,6 +16,7 @@ qt5_add_resources(markdownpart_SRCS
 )
 
 add_library(kmarkdownwebviewpart  MODULE ${markdownpart_SRCS})
+kcoreaddons_desktop_to_json(kmarkdownwebviewpart kmarkdownwebviewpart.desktop)
 
 
 target_link_libraries(kmarkdownwebviewpart
