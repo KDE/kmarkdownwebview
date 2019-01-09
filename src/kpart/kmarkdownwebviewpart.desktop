@@ -26,4 +26,4 @@ Name[x-test]=xxMarkdown Web Viewxx
 Icon=text-markdown
 MimeType=text/markdown;
 X-KDE-ServiceTypes=KParts/ReadOnlyPart,Browser/View
-X-KDE-Library=kmarkdownwebviewpart
+X-KDE-Library=kf5/parts/kmarkdownwebviewpart
