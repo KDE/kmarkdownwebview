@@ -89,7 +89,10 @@ private:
 #endif
 
 private:
-    KMarkdownViewPage* m_viewPage = nullptr;
+    // manual lifetime management here needed for NOT USE_QTWEBKIT, also fine in other case
+    // we need to delete the page before the QWebEngineProfile object passed to it in the constructor
+    // which itself is handled by this class' QObject child lifetime management
+    QScopedPointer<KMarkdownViewPage> const m_viewPage;
 
     KMarkdownHtmlView* const m_htmlView;
     KAbstractMarkdownSourceDocument* const m_sourceDocument;
