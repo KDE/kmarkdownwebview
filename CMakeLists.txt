@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 
-project(kmarkdownwebview VERSION 0.5.4)
+project(kmarkdownwebview VERSION 0.5.5)
 
 set(QT_MIN_VERSION "5.6.0")
 set(KF_MIN_VERSION "5.25.0")
