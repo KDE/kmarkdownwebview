@@ -94,7 +94,7 @@
   <update_contact>kossebau_at_kde.org</update_contact>
   <project_group>KDE</project_group>
   <categories>
-    <category>Utilities</category>
+    <category>Utility</category>
   </categories>
   <icon type="stock">text-markdown</icon>
 </component>
