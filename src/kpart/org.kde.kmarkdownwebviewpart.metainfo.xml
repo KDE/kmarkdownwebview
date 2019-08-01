@@ -92,6 +92,11 @@
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=kmarkdownwebview&amp;component=kpart</url>
   <url type="donation">https://www.kde.org/community/donations/?app=kmarkdownwebview</url>
   <update_contact>kossebau_at_kde.org</update_contact>
+  <screenshots>
+    <screenshot type="default">
+      <image>https://cdn.kde.org/screenshots/kmarkdownwebview/kmarkdownwebview.png</image>
+    </screenshot>
+  </screenshots>
   <project_group>KDE</project_group>
   <categories>
     <category>Utility</category>
