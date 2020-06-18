@@ -25,6 +25,7 @@ Name[sk]=Súbory Markdown
 Name[sl]=Markdown Web View
 Name[sv]=Markdown-filer
 Name[uk]=Файли Markdown
+Name[x-test]=xxMarkdown Filesxx
 Name[zh_TW]=Markdown 檔案
 X-KDE-ServiceTypes=ThumbCreator
 MimeType=text/markdown;
