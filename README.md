@@ -9,7 +9,11 @@ This repository contains software for the rendered display of Markdown documents
 
 The software is inspired by the [WebEngine Markdown Editor Example](https://doc.qt.io/qt-5/qtwebengine-webenginewidgets-markdowneditor-example.html) from the Qt documentation. The plain text file data in the Markdown format is fed into a local webpage wrapped with C++/Qt, via a QWebChannel or QtWebKit bridge, where a JavaScript library creates HTML data from it, which then is inserted into that webpage and thus displayed.
 
-The software should serve as intermediate solution until some native Qt-based implementation is done.
+The software has been serving as intermediate solution until some native Qt-based implementation is done. As of August 2020, there are 2 alternatives now known as available:
+* [Markdown KPart](https://commits.kde.org/markdownpart), based on [QTextDocument](https://doc.qt.io/qt-5/qtextdocument.html)'s built-in Markdown support (since Qt 5.14)
+* [Okular](https://okular.kde.org/)'s KPart, using Okular's Markdown support
+
+So this software is becoming more deprecated the better the Markdown support (for all the Markdown flavors) of those gets.
 
 ### Deployed 3rd-party software
 
