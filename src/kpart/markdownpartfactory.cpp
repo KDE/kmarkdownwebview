@@ -29,7 +29,10 @@ MarkdownPartFactory::MarkdownPartFactory()
                   i18n("KMarkdownWebViewPart"),
                   QStringLiteral(KMARKDOWNWEBVIEW_VERSION),
                   i18n("For the rendered display of Markdown files in a webpage-like layout"),
-                  KAboutLicense::LGPL_V2_1
+                  KAboutLicense::LGPL_V2_1,
+                  i18n("Copyright 2017,2020 Friedrich W. H. Kossebau"),
+                  QString(),
+                  QStringLiteral("https://commits.kde.org/kmarkdownwebview")
                  )
 {
     m_aboutData.addAuthor(i18n("Friedrich W. H. Kossebau"), i18n("Author"), QStringLiteral("kossebau@kde.org"));
