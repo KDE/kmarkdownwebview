@@ -51,7 +51,7 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     frame->addToJavaScriptWindowObject(QStringLiteral("sourceTextObject"), m_sourceDocument);
     frame->addToJavaScriptWindowObject(QStringLiteral("viewObject"), m_htmlView);
 #else
-    QWebChannel* channel = new QWebChannel(this);
+    auto* channel = new QWebChannel(this);
     channel->registerObject(QStringLiteral("sourceTextObject"), m_sourceDocument);
     channel->registerObject(QStringLiteral("viewObject"), m_htmlView);
     m_viewPage->setWebChannel(channel);

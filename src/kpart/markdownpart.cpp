@@ -46,7 +46,7 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
     setComponentData(aboutData);
 
     // set internal UI
-    auto mainLayout = new QVBoxLayout;
+    auto* mainLayout = new QVBoxLayout;
     mainLayout->setContentsMargins(0, 0, 0, 0);
     mainLayout->setSpacing(0);
 
@@ -55,7 +55,7 @@ MarkdownPart::MarkdownPart(QWidget* parentWidget, QObject* parent, const KAboutD
     m_searchToolBar->hide();
     mainLayout->addWidget(m_searchToolBar);
 
-    auto mainWidget = new QWidget(parentWidget);
+    auto* mainWidget = new QWidget(parentWidget);
     mainWidget->setLayout(mainLayout);
     setWidget(mainWidget);
 
@@ -116,7 +116,7 @@ void MarkdownPart::setupActions(Modus modus)
     m_searchPreviousAction->setEnabled(false);
     m_widget->addAction(m_searchPreviousAction);
 
-    auto closeFindBarShortcut = new QShortcut(QKeySequence(Qt::Key_Escape), widget());
+    auto* closeFindBarShortcut = new QShortcut(QKeySequence(Qt::Key_Escape), widget());
     closeFindBarShortcut->setContext(Qt::WidgetWithChildrenShortcut);
     connect(closeFindBarShortcut, &QShortcut::activated, m_searchToolBar, &SearchToolBar::hide);
 }
@@ -310,10 +310,10 @@ QAction* MarkdownPart::copySelectionAction() const
 
 QAction* MarkdownPart::createCopyEmailAddressAction(QObject* parent, const QUrl& mailtoUrl)
 {
-    auto action = new QAction(parent);
+    auto* action = new QAction(parent);
     action->setText(i18n("&Copy Email Address"));
     connect(action, &QAction::triggered, parent, [&] {
-        QMimeData* data = new QMimeData;
+        auto* data = new QMimeData;
         data->setText(mailtoUrl.path());
         QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
     });
@@ -323,11 +323,11 @@ QAction* MarkdownPart::createCopyEmailAddressAction(QObject* parent, const QUrl&
 
 QAction* MarkdownPart::createCopyLinkTextAction(QObject* parent, const QString& text)
 {
-    auto action = new QAction(parent);
+    auto* action = new QAction(parent);
     action->setIcon(QIcon::fromTheme(QStringLiteral("edit-copy")));
     action->setText(i18n("Copy Link &Text"));
     connect(action, &QAction::triggered, parent, [&] {
-        QMimeData* data = new QMimeData;
+        auto* data = new QMimeData;
         data->setText(text);
         QApplication::clipboard()->setMimeData(data, QClipboard::Clipboard);
     });
@@ -337,7 +337,7 @@ QAction* MarkdownPart::createCopyLinkTextAction(QObject* parent, const QString& 
 
 QAction* MarkdownPart::createCopyLinkUrlAction(QObject* parent)
 {
-    auto action = new QAction(parent);
+    auto* action = new QAction(parent);
     action->setText(i18n("Copy Link &URL"));
     connect(action, &QAction::triggered, this, &MarkdownPart::copyLinkUrl);
 
@@ -346,7 +346,7 @@ QAction* MarkdownPart::createCopyLinkUrlAction(QObject* parent)
 
 QAction* MarkdownPart::createSaveLinkAsAction(QObject* parent)
 {
-    auto action = new QAction(parent);
+    auto* action = new QAction(parent);
     action->setText(i18n("&Save Link As..."));
     connect(action, &QAction::triggered, this, &MarkdownPart::saveLinkAs);
 
