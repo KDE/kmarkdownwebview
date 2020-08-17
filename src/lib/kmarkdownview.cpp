@@ -37,17 +37,17 @@ KMarkdownView::KMarkdownView(KAbstractMarkdownSourceDocument* sourceDocument, QW
     connect(m_viewPage.data(), &KMarkdownViewPage::openUrlRequested, this, &KMarkdownView::openUrlRequested);
     connect(m_viewPage.data(), &KMarkdownViewPage::linkHovered, this, &KMarkdownView::linkHovered);
 
-    auto copyAction = pageAction(WebPage::Copy);
+    QAction* copyAction = pageAction(WebPage::Copy);
     connect(copyAction, &QAction::changed, this, [&] {
         emit copyTextEnabledChanged(pageAction(WebPage::Copy)->isEnabled());
     });
-    auto selectAllAction = pageAction(WebPage::SelectAll);
+    QAction* selectAllAction = pageAction(WebPage::SelectAll);
     connect(selectAllAction, &QAction::changed, this, [&] {
         emit selectAllEnabledChanged(pageAction(WebPage::SelectAll)->isEnabled());
     });
 
 #ifdef USE_QTWEBKIT
-    auto frame = m_viewPage->mainFrame();
+    QWebFrame* frame = m_viewPage->mainFrame();
     frame->addToJavaScriptWindowObject(QStringLiteral("sourceTextObject"), m_sourceDocument);
     frame->addToJavaScriptWindowObject(QStringLiteral("viewObject"), m_htmlView);
 #else
@@ -76,7 +76,7 @@ void KMarkdownView::setScrollPosition(int x, int y)
 void KMarkdownView::renderPage(QPainter* painter, const QRect& clip)
 {
 #ifdef USE_QTWEBKIT
-    auto mainFrame = page()->mainFrame();
+    QWebFrame* mainFrame = page()->mainFrame();
     page()->setViewportSize(mainFrame->contentsSize());
     mainFrame->render(painter, QWebFrame::ContentsLayer, clip);
 #else

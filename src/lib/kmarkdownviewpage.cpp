@@ -43,7 +43,7 @@ bool KMarkdownViewPage::acceptNavigationRequest(QWebFrame* frame,
     Q_UNUSED(type);
     Q_UNUSED(frame);
 
-    const auto url = request.url();
+    const QUrl url = request.url();
     // Only allow qrc:/index.html.
     if (url.scheme() == QLatin1String("qrc")) {
         return true;

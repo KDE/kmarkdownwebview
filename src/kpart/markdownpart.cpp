@@ -148,7 +148,7 @@ bool MarkdownPart::openFile()
 
 bool MarkdownPart::doOpenStream(const QString& mimeType)
 {
-    auto mime = QMimeDatabase().mimeTypeForName(mimeType);
+    const QMimeType mime = QMimeDatabase().mimeTypeForName(mimeType);
     if (!mime.inherits(QStringLiteral("text/markdown"))) {
         return false;
     }
@@ -193,7 +193,7 @@ bool MarkdownPart::doCloseStream()
 bool MarkdownPart::closeUrl()
 {
     // protect against repeated call if already closed
-    const auto currentUrl = url();
+    const QUrl currentUrl = url();
     if (currentUrl.isValid()) {
         m_previousScrollPosition = m_widget->scrollPosition();
         m_previousUrl = currentUrl;
@@ -249,7 +249,7 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
             }
         }
     } else {
-        auto action = menu.addAction(i18n("Open Link"));
+        QAction* action = menu.addAction(i18n("Open Link"));
         connect(action, &QAction::triggered, this, [&] {
             handleOpenUrlRequest(linkUrl);
         });
@@ -266,7 +266,7 @@ void MarkdownPart::requestContextMenu(const QPoint& globalPos,
         }
     }
 #ifdef DEBUG_WEB
-    auto action = menu.addAction(QStringLiteral("Inspect Element"));
+    QAction* action = menu.addAction(QStringLiteral("Inspect Element"));
     connect(action, &QAction::triggered, m_widget, &KMarkdownView::inspectElement);
 #endif
 
