@@ -41,8 +41,8 @@
   <name xml:lang="x-test">xxMarkdown Viewer KPartxx</name>
   <name xml:lang="zh-TW">Markdown 檢視器 KPart</name>
   <summary>Rendered display of Markdown files in KParts-using software</summary>
-  <summary xml:lang="ca">Mostra renderitzats els fitxers de Markdown en el programari que utilitza les KParts</summary>
-  <summary xml:lang="ca-valencia">Mostra renderitzats els fitxers de Markdown en el programari que utilitza les KParts</summary>
+  <summary xml:lang="ca">Mostra renderitzats els fitxers Markdown en el programari que utilitza les KParts</summary>
+  <summary xml:lang="ca-valencia">Mostra renderitzats els fitxers Markdown en el programari que utilitza les KParts</summary>
   <summary xml:lang="cs">Zpracované zobrazení Markdown v aplikacích využívajících KParts</summary>
   <summary xml:lang="da">Gengivet visning af Markdown-filer i KParts med software</summary>
   <summary xml:lang="de">Anzeige von Markdown-Dateien in Software, die KParts verwendet</summary>
