@@ -40,7 +40,7 @@
   <name xml:lang="uk">Модуль перегляду даних markdown</name>
   <name xml:lang="x-test">xxMarkdown Viewer KPartxx</name>
   <name xml:lang="zh-TW">Markdown 檢視器 KPart</name>
-  <summary>Rendered display of Markdown files in KParts-using software</summary>
+  <summary>Rendered display of Markdown files in KParts-using software (webtech-based)</summary>
   <summary xml:lang="ca">Mostra renderitzats els fitxers Markdown en el programari que utilitza les KParts</summary>
   <summary xml:lang="ca-valencia">Mostra renderitzats els fitxers Markdown en el programari que utilitza les KParts</summary>
   <summary xml:lang="cs">Zpracované zobrazení Markdown v aplikacích využívajících KParts</summary>
