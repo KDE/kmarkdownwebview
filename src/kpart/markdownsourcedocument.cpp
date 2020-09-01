@@ -10,7 +10,7 @@ void MarkdownSourceDocument::setText(const QString& text)
 {
     m_text = text;
 
-    emit textChanged(m_text);
+    Q_EMIT textChanged(m_text);
 }
 
 QString MarkdownSourceDocument::text() const

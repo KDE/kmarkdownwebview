@@ -49,7 +49,7 @@ bool KMarkdownViewPage::acceptNavigationRequest(QWebFrame* frame,
         return true;
     }
 
-    emit openUrlRequested(url);
+    Q_EMIT openUrlRequested(url);
     return false;
 }
 #else
@@ -65,7 +65,7 @@ bool KMarkdownViewPage::acceptNavigationRequest(const QUrl& url,
         return true;
     }
 
-    emit openUrlRequested(url);
+    Q_EMIT openUrlRequested(url);
     return false;
 }
 #endif

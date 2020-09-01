@@ -19,5 +19,5 @@ void KMarkdownHtmlView::setScrollPosition(int x, int y)
 
 void KMarkdownHtmlView::emitRenderingDone()
 {
-    emit renderingDone();
+    Q_EMIT renderingDone();
 }

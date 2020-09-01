@@ -299,8 +299,8 @@ void MarkdownPart::showHoveredLink(const QString& link)
         }
     }
 
-    emit m_browserExtension->mouseOverInfo(fileItem);
-    emit setStatusBarText(message);
+    Q_EMIT m_browserExtension->mouseOverInfo(fileItem);
+    Q_EMIT setStatusBarText(message);
 }
 
 QAction* MarkdownPart::copySelectionAction() const

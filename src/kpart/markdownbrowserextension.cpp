@@ -21,7 +21,7 @@ MarkdownBrowserExtension::MarkdownBrowserExtension(MarkdownPart* part)
     , m_part(part)
     , m_contextMenuActionCollection(new KActionCollection(this))
 {
-     emit enableAction("copy", m_part->view()->isCopyTextEnabled());
+     Q_EMIT enableAction("copy", m_part->view()->isCopyTextEnabled());
 }
 
 void MarkdownBrowserExtension::copy()
@@ -31,17 +31,17 @@ void MarkdownBrowserExtension::copy()
 
 void MarkdownBrowserExtension::updateCopyAction(bool enabled)
 {
-    emit enableAction("copy", enabled);
+    Q_EMIT enableAction("copy", enabled);
 }
 
 void MarkdownBrowserExtension::requestOpenUrl(const QUrl& url)
 {
-    emit openUrlRequest(url);
+    Q_EMIT openUrlRequest(url);
 }
 
 void MarkdownBrowserExtension::requestOpenUrlNewWindow(const QUrl& url)
 {
-    emit createNewWindow(url);
+    Q_EMIT createNewWindow(url);
 }
 
 void MarkdownBrowserExtension::requestContextMenu(const QPoint& globalPos,
@@ -125,7 +125,7 @@ void MarkdownBrowserExtension::requestContextMenu(const QPoint& globalPos,
         KParts::BrowserArguments bargs;
         bargs.setForcesNewWindow(forcesNewWindow);
 
-        emit popupMenu(globalPos, emitUrl, static_cast<mode_t>(-1), args, bargs, flags, mapAction);
+        Q_EMIT popupMenu(globalPos, emitUrl, static_cast<mode_t>(-1), args, bargs, flags, mapAction);
     }
 }
 
