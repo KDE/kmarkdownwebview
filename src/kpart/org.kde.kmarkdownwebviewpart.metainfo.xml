@@ -47,11 +47,14 @@
   <summary xml:lang="cs">Zpracované zobrazení Markdown v aplikacích využívajících KParts (založeno na webtech)</summary>
   <summary xml:lang="de">Anzeige von Markdown-Dateien in Software, die KParts verwendet (Web-Technologie nutzend)</summary>
   <summary xml:lang="el">Οθόνη αποτύπωσης αρχείων markdown σε λογισμικό που χρησιμοποιεί KParts</summary>
+  <summary xml:lang="en-GB">Rendered display of Markdown files in KParts-using software (webtech-based)</summary>
   <summary xml:lang="es">Pantalla de visualización de archivos Markdown en software que usa KParts (basado en webtech)</summary>
   <summary xml:lang="eu">Markdown fitxategiak errendatuta azaltzea KParts erabiltzen duen softwarean («webtech»en oinarrituta)</summary>
   <summary xml:lang="fr">Rendu à l'écran de fichiers « Markdown » dans les logiciels utilisant le composant « KParts » (reposant sur des technologies Internet)</summary>
+  <summary xml:lang="it">Visualizzazione formattata di file Markdown in software che usano KPart (tramite tecnologie web)</summary>
   <summary xml:lang="ko">KParts를 사용하는 프로그램에서 Markdown 파일을 렌더링하여 표시합니다(Webtech 기반)</summary>
   <summary xml:lang="nl">Toonbare weergave van Markdown-bestanden in software die KParts gebruikt (webtech-gebaseerd)</summary>
+  <summary xml:lang="nn">Vising av Markdown-filer i program som støttar KPart (webtech-basert)</summary>
   <summary xml:lang="pt">Apresentação desenhada dos ficheiros de Markdown nas aplicações baseadas no KParts (baseada no Webtech)</summary>
   <summary xml:lang="pt-BR">Exibição renderizada de arquivos Markdown nos aplicativos que usam o KParts (baseado no webtech)</summary>
   <summary xml:lang="ru">Компонент просмотра файлов Markdown в отформатированном виде (на основе веб-технологий)</summary>
