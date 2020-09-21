@@ -105,7 +105,21 @@
   </categories>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="0.5.6" date="2020-09-21"/>
+    <release version="0.5.6" date="2020-09-21">
+      <description>
+        <ul>
+          <li>Translation updates</li>
+          <li>marked copy updated to v1.1.1</li>
+        </ul>
+      </description>
+      <artifacts>
+        <artifact type="source">
+          <location>https://download.kde.org/stable/kmarkdownwebview/0.5.6/src/kmarkdownwebview-0.5.6.tar.xz</location>
+          <checksum type="sha256">713803095c56bf766171e3a911a0b5d9123acd0e53cb8680e05ab54b018929e7</checksum>
+          <size type="download">68992</size>
+        </artifact>
+      </artifacts>
+    </release>
     <release version="0.5.5" date="2019-02-18"/>
   </releases>
 </component>
