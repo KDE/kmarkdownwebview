@@ -122,4 +122,5 @@
     </release>
     <release version="0.5.5" date="2019-02-18"/>
   </releases>
+  <icon type="stock">text-markdown</icon>
 </component>
